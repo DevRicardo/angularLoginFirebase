@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import { Router } from '@angular/router';
 import { moveIn } from '../router.animations';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,7 +29,26 @@ export class LoginComponent implements OnInit {
       method: AuthMethods.Popup
     }).then(
       (success)=>{
-        this.router.navigate(['/members'])
+        this.router.navigate(['/members']);
+      }
+    ).catch(
+      (err) => {
+        this.error = err;
+      }
+    )
+  }
+
+  loginGoogle(){
+    this.af.auth.login({
+      provider: AuthProviders.Google,
+      method: AuthMethods.Popup
+    }).then(
+      (success) => {
+        this.router.navigate(['/member']);
+      }
+    ).catch(
+      (err) => {
+        this.error = err;
       }
     )
   }
