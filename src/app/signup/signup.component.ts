@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
 import { moveIn, fallIn } from '../router.animations';
 
@@ -13,19 +13,20 @@ import { moveIn, fallIn } from '../router.animations';
 export class SignupComponent implements OnInit {
   state: string = '';
   error: any;
+  email:string = '';
+  password:string = '';
 
-  constructor(public af: AngularFire, private router: Router) { }
+  constructor(public af: AngularFireAuth, private router: Router) { }
 
   ngOnInit() {}
 
   onsubmit(formData){
     if(formData.valid){
       console.log(formData.value);
+      this.email = formData.value.email;
+      this.password = formData.value.password;
 
-      this.af.auth.createUser({
-        email: formData.value.email,
-        password: formData.value.password
-      }).then(
+      this.af.auth.createUserWithEmailAndPassword(this.email, this.password).then(
         (success) => {
           console.log(success);
           this.router.navigate(['/login']);

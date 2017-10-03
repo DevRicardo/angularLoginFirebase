@@ -8,6 +8,9 @@ import { EmailComponent } from './email/email.component';
 import { SignupComponent } from './signup/signup.component';
 import { MembersComponent } from './members/members.component';
 
+import { AuthService } from './auth.service';
+import { routes } from './app.routes';
+
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyDO_PG1JAqXqnK10E7Znft-S7oHLoIAUK0',
@@ -30,7 +33,7 @@ export const firebaseConfig = {
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
