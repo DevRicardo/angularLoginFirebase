@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
+import { FormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -9,7 +10,8 @@ import { SignupComponent } from './signup/signup.component';
 import { MembersComponent } from './members/members.component';
 
 import { AuthService } from './auth.service';
-import { routes } from './app.routes';
+import {  routes } from './app.routes';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
 export const firebaseConfig = {
@@ -28,10 +30,15 @@ export const firebaseConfig = {
     EmailComponent,
     SignupComponent,
     MembersComponent
+    
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    routes,
+    FormsModule,
+    AngularFireAuthModule
+    
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
