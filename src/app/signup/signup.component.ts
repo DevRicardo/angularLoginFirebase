@@ -20,7 +20,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {}
 
-  onsubmit(formData){
+  onSubmit(formData){
     if(formData.valid){
       console.log(formData.value);
       this.email = formData.value.email;

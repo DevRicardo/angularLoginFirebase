@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { EmailComponent } from './email/email.component';
 import { SignupComponent } from './signup/signup.component';
 import { MembersComponent } from './members/members.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AuthService } from './auth.service';
 import {  routes } from './app.routes';
@@ -37,7 +38,8 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     routes,
     FormsModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    BrowserAnimationsModule
     
   ],
   providers: [AuthService],
